@@ -2,6 +2,8 @@ import React, {useState} from 'react';
 
 import config from './config';
 
+import MovieCard from './MovieCard';
+
 const handleError = (errorMessage, errorData) => {
   const { status_code, status_message } = errorData;
   const message = `\n\t💥 ${errorMessage} 💥 → (${status_code}) ${status_message}`;
@@ -24,7 +26,7 @@ const handleError = (errorMessage, errorData) => {
 // =============================================================================
 
 export default function MovieSearch() {
-  const { apiUrl, apiKey, moviePosterUrl } = config;  
+  const { apiUrl, apiKey } = config;  
 
   const [query, setQuery] = useState('');
   const [movies, setMovies] = useState([]);
@@ -63,18 +65,7 @@ export default function MovieSearch() {
       </form>
       <div className="card-list">
           {movies.filter(movie => movie.poster_path).map(movie => (
-            <div className="card" key={movie.id}>
-              <img className="card--image"
-                src={`${moviePosterUrl}/${movie.poster_path}`}
-                alt={`Movie poster for '${movie.title}'`}
-              />
-              <div className="card--content">
-                <h3 className="card--title">{movie.title}</h3>
-                <p><small>RELEASE DATE: {movie.release_date}</small></p>
-                <p><small>RATING: {movie.vote_average}</small></p>
-                <p className="card--desc">{movie.overview}</p>
-              </div>
-            </div>
+            <MovieCard movie={movie} key={movie.id} />
           ))}
       </div>
     </>
