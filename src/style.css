@@ -1,13 +1,16 @@
 * {
   box-sizing: border-box;
+  outline: none !important;
 }
 
 html {
+  font-family: 'Segoe UI Light', Arial, Helvetica, sans-serif;
   font-size: 10px;
+  font-weight: 200;
 }
 
 body {
-  background-color: rgb(244,244,244);
+  background-color: rgb(244, 244,2 44);
   color: #333;
   margin: 0;
   padding: 0;
@@ -27,7 +30,55 @@ small {
   padding: 40px;
 }
 
+.form {
+  display: grid;
+}
+
+.label {
+  font-size: 1.2rem;
+  margin-bottom: 0.2rem;
+  margin-left: 1.5rem;
+  text-transform: uppercase;
+}
+
 .title {
   font-size: 4.4rem;
-  text-align: center
+  text-align: center;
+}
+
+.input {
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  font-size: 1.6rem;
+  line-height: 2.8rem;
+  margin-bottom: 1rem;
+  outline: none;
+  padding: 0.5rem 2rem;
+}
+
+.button {
+  background-color: rgba(0, 0, 0, 0.75);
+  border: 1px solid rgba(0, 0, 0, 0.75);
+  border-radius: 20px;
+  color: white;
+  cursor: pointer;
+  font-size: 1.4rem;
+  padding: 1rem 2rem;
+  transition: background-color 250ms;
+}
+
+.button:hover {
+  background-color: rgba(0, 0, 0, 0.85);
+}
+
+@media (min-width: 786px) {
+  .form {
+    align-items: center;
+    grid-gap: 1rem;
+    grid-template-columns: auto 1fr auto;
+  }
+  
+  .input {
+    margin-bottom: 0;
+  }
 }
