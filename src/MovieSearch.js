@@ -25,6 +25,7 @@ const handleError = (errorMessage, errorData) => {
 
 export default function MovieSearch() {
   const [query, setQuery] = useState('');
+  const [movies, setMovies] = useState([]);
 
   const searchMovies = async (e) => {
     e.preventDefault();
@@ -39,7 +40,7 @@ export default function MovieSearch() {
       if (!response.ok)
         handleError('Unable to search for movies', data);
 
-      console.dir(data.results);
+      setMovies(data.results);
     } catch (error) {
       console.error(error);
     }
